@@ -31,7 +31,7 @@ class Login extends Component {
       password: password
     }
 
-    const url = location.protocol + '//' + location.hostname + ':3000/users/sign_in'
+    const url = location.protocol + '//' + location.hostname + '/users/sign_in'
     axios.post(url, { user }, {
       withCredentials: true,
       headers: {

@@ -35,7 +35,7 @@ class Signup extends Component {
       password: password,
       password_confirmation: password_confirmation
     }
-    const url = location.protocol + '//' + location.hostname + ':3000/users'
+    const url = location.protocol + '//' + location.hostname + '/users'
     axios.post(url, { user }, { 
       withCredentials: true,
       headers: { 
