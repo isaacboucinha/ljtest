@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-
+      get "/user_profiles", to: "user_profiles#index"
+      get "/articles/:id", to: "articles#show"
     end
   end
 
