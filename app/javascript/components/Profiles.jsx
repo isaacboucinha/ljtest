@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CompareProfiles extends Component {
+class Profiles extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,4 +10,4 @@ class CompareProfiles extends Component {
   }
 }
 
-export default CompareProfiles;
+export default Profiles;

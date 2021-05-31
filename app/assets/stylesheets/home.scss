@@ -1,0 +1,22 @@
+// Place all the styles related to the Homepage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.search-bar {
+  padding: 5vh;
+  padding-bottom: 0;
+
+  input {
+    width: 100%;
+  }
+}
+
+.search-button {
+  display: flex;
+  justify-content: center;
+  padding: 5vh;
+}
+
+.blurred {
+  filter: blur(2px);
+}

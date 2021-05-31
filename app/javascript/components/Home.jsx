@@ -1,11 +1,43 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import axios from 'axios'
+
 import { UserContext } from '../context/UserContext';
 
 class Home extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      searchTerm: '',
+      blurred: false
+    }
+  }
+
+  handleChange = (event) => {
+    const value = event.target.value
+    this.setState({
+      searchTerm: value
+    })
+  };
+
+  submitSearch = (event) => {
+    event.preventDefault()
+    this.setState({
+      blurred: true
+    })
+
+    axios
+      .get('https://api.github.com/users/' + this.state.searchTerm)
+      .then(response => {
+        if (response.status === 200) {
+          handleLogin(response.data)
+        }
+        this.setState({
+          blurred: false
+        })
+      })
   }
 
   renderDefaultHome() {
@@ -38,11 +70,31 @@ class Home extends Component {
     )
   }
 
-  renderLoggedHome() {
-    return <h1>Logged In</h1>
+  renderLoggedHome(searchTerm, blurred) {
+    return (
+      <div className={`vw-100 vh-100 primary-color d-flex align-items-center justify-content-center
+                      ${blurred ? "blurred" : ""}`}>
+        <div className="jumbotron jumbotron-fluid bg-transparent">
+          <div className="container secondary-color">
+            <h1 className="display-4">Search for a profile</h1>
+            <div className="search-bar">
+              <input placeholder="Enter the name of a user on Github" value={searchTerm} onChange={this.handleChange}/>
+            </div>
+            <div className="search-button">
+              <button className="btn btn-lg custom-button" 
+                      placeholder="go" type="submit" 
+                      onClick={this.submitSearch}>
+                Go
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   render() {
+    const { searchTerm, blurred } = this.state
     return (
       <UserContext.Consumer>
         {({ user }) => {
@@ -51,7 +103,7 @@ class Home extends Component {
           } else if (Object.keys(user).length === 0) {
             return this.renderDefaultHome()
           } else {
-            return this.renderLoggedHome()
+            return this.renderLoggedHome(searchTerm, blurred)
           }
         }}
       </UserContext.Consumer>
