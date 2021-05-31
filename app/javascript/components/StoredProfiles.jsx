@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
+
+import { UserContext } from '../context/UserContext';
 
 class StoredProfiles extends Component {
   constructor(props) {
@@ -6,7 +9,17 @@ class StoredProfiles extends Component {
   }
 
   render() {
-    return <h1>UNDER CONSTRUCTION</h1>
+    return (
+      <UserContext.Consumer>
+        {({ user }) => {
+          if (!user) {
+            return (<Redirect to="/"></Redirect>)
+          } else {
+            
+          }
+        }}
+      </UserContext.Consumer>
+    )
   }
 }
 

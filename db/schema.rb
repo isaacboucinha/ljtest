@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_220222) do
 
   create_table "user_profiles", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "profile_id"
+    t.string "profile_username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"

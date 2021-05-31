@@ -117,6 +117,14 @@ class Home extends Component {
               )
             }
             </div>
+            <div className="links-container">
+              <Link
+                to="/profiles/stored"
+                className="link"
+              >
+                Go to saved profiles
+              </Link>
+            </div>
           </div>
         </div>
       </div>
