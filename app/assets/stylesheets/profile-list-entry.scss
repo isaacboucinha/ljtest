@@ -1,0 +1,29 @@
+
+.avatar-container {
+  img {
+    height: 10vh;
+    border-radius: 10px;
+  }
+}
+
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result {
+  p {
+    justify-content: center;
+    display: flex;
+  }
+}
+
+.profile-simple-container {
+  border: 1px solid grey;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}

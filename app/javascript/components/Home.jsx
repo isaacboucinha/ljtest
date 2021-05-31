@@ -5,13 +5,16 @@ import axios from 'axios'
 
 import { UserContext } from '../context/UserContext';
 
+import ProfileListEntry from './ProfileListEntry'
+
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       searchTerm: '',
-      blurred: false
+      blurred: false,
+      profile: {}
     }
   }
 
@@ -32,9 +35,15 @@ class Home extends Component {
       .get('https://api.github.com/users/' + this.state.searchTerm)
       .then(response => {
         if (response.status === 200) {
-          handleLogin(response.data)
+          this.setState({
+            profile: response.data,
+            blurred: false
+          })
         }
+      })
+      .catch((error) => {
         this.setState({
+          profile: null,
           blurred: false
         })
       })
@@ -71,6 +80,7 @@ class Home extends Component {
   }
 
   renderLoggedHome(searchTerm, blurred) {
+    const { profile } = this.state
     return (
       <div className={`vw-100 vh-100 primary-color d-flex align-items-center justify-content-center
                       ${blurred ? "blurred" : ""}`}>
@@ -83,9 +93,29 @@ class Home extends Component {
             <div className="search-button">
               <button className="btn btn-lg custom-button" 
                       placeholder="go" type="submit" 
-                      onClick={this.submitSearch}>
+                      onClick={this.submitSearch}
+                      autoFocus>
                 Go
               </button>
+            </div>
+            <div className="search-result">
+            {
+              profile === null && (
+                <p className="search-no-results">
+                  Looks like no matches were found. Try again?
+                </p>
+              )
+            }
+            {
+              profile && Object.keys(profile).length > 0 && (
+                <>
+                  <p className="search-results-found">
+                    Found a match:
+                  </p>
+                  <ProfileListEntry profile={profile} />
+                </>
+              )
+            }
             </div>
           </div>
         </div>
