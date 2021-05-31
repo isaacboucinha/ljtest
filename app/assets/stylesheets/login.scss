@@ -1,0 +1,46 @@
+
+.login-form {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+}
+
+.form {
+  width: 60vh;
+}
+
+.form-header {
+  justify-content: center;
+  display: flex;
+  padding: 5vh;
+}
+
+.form-group {
+  margin: 1vh;
+  margin-bottom: 5vh;
+}
+
+.form-label {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+
+  label {
+    font-size: larger;
+  }
+}
+
+.form-text {
+  margin-top: -.25rem;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+}
+
+.form-errors {
+  color:red;
+  display: flex;
+  justify-content: center;
+}
