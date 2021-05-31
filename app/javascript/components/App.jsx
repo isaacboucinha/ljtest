@@ -5,6 +5,8 @@ import Routes from '../routes/App'
 
 import {UserContext} from '../context/UserContext';
 
+import { configs } from '../constants'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class App extends Component {
 
   loginStatus = () => {
     const csrf_token = document.querySelector('meta[name="csrf-token"]').content
-    const url = location.protocol + '//' + location.hostname + '/logged_in'
+    const url = configs.urls.API_URL + '/logged_in'
     axios.get(url, {
       withCredentials: true, 
       headers: {

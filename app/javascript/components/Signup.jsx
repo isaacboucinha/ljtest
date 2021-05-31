@@ -5,6 +5,7 @@ import axios from 'axios'
 
 import { UserContext } from '../context/UserContext';
 
+import { configs } from '../constants'
 
 class Signup extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class Signup extends Component {
       password: password,
       password_confirmation: password_confirmation
     }
-    const url = location.protocol + '//' + location.hostname + '/users'
+    const url = configs.urls.API_URL + '/users'
     axios.post(url, { user }, { 
       withCredentials: true,
       headers: { 
