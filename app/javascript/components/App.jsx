@@ -31,7 +31,7 @@ class App extends Component {
       'Accept': 'application/json'
     }})   
     .then(response => {
-        if (response.data.logged_in) {
+        if (response.data) {
           this.handleLogin(response.data)
         } else {
           this.handleLogout()
@@ -47,7 +47,7 @@ class App extends Component {
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      user: data
     })
   }
   
