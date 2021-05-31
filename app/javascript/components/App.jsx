@@ -20,7 +20,8 @@ class App extends Component {
 
   loginStatus = () => {
     const csrf_token = document.querySelector('meta[name="csrf-token"]').content
-    axios.get('http://localhost:3000/logged_in', {
+    const url = location.protocol + '//' + location.hostname + ':3000/logged_in'
+    axios.get(url, {
       withCredentials: true, 
       headers: {
       'X-CSRF-TOKEN': csrf_token,

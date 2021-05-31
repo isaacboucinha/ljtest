@@ -31,7 +31,8 @@ class Login extends Component {
       password: password
     }
 
-    axios.post('http://localhost:3000/users/sign_in', { user }, {
+    const url = location.protocol + '//' + location.hostname + ':3000/users/sign_in'
+    axios.post(url, { user }, {
       withCredentials: true,
       headers: {
         'X-CSRF-TOKEN': csrf_token,
