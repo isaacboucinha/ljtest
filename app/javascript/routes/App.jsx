@@ -6,7 +6,7 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 
 import StoredProfiles from "../components/StoredProfiles";
-import CompareProfiles from "../components/CompareProfiles";
+import Profiles from "../components/Profiles";
 
 
 export default class Routes extends React.Component {
@@ -17,8 +17,8 @@ export default class Routes extends React.Component {
           <Route exact path='/' component={Home}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={Signup}/>
-          <Route exact path='/profiles' component={StoredProfiles}/>
-          <Route exact path='/profiles/compare' component={CompareProfiles}/>
+          <Route exact path='/profiles' component={Profiles}/>
+          <Route exact path='/profiles/stored' component={StoredProfiles}/>
         </Switch>
       </Router>
     )
